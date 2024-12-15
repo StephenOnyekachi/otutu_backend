@@ -1,0 +1,32 @@
+
+{% extends 'extend/shop-base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="store">
+    {% if items %}
+    {% for item in items %}
+    <div class="store-card">
+        <div style="justify-self: left;">
+            <a href="{{item.image.url}}">
+                <img src="{{item.image.url}}" alt="image">
+            </a>
+        </div>
+        <div>
+            <h4>{{item.name}}</h4>
+            <p>
+                {{item.des}}
+            </p>
+        </div>
+        <div class="cart-action">
+            <strong>N{{item.selling_price}}</strong>
+            <a href="{% url 'tocart' item.id %}">
+                <i class=" fa fa-plus"> <span>add to cart</span></i>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+
+
+{% extends 'extend/dashboad-base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="boad-body">
+    <div class="item-con">
+        <div class="item-info">
+            <h3>add new item</h3>
+        </div>
+    </div>
+    <hr>
+    <div class="items">
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.success %}
+        <div class="success-m">
+            <p>{{message}}</p>
+        </div>
+        {% else %}
+        <div class="info-m">
+            <p>{{message}}</p>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="item">
+                <div class="item-con">
+                    <div class="item-info">
+                        <h3>item name</h3>
+                        <input type="text" name="name" placeholder="Enter item name" required>
+                    </div>
+                    <div class="item-info">
+                        <h3>out number</h3>
+                        <input type="text" name="number" placeholder="Enter out number" required>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-con">
+                    <div class="item-info">
+                        <h3>selling price</h3>
+                        <input type="number" name="sprice" placeholder="Enter price" required>
+                    </div>
+                    <div class="item-info">
+                        <h3>but price</h3>
+                        <input type="number" name="bprice" placeholder="Enter but price">
+                    </div>
+                    <div class="item-info">
+                        <h3>quantity</h3>
+                        <input type="number" name="quantity" placeholder="Enter quantity" required>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-con">
+                    <div class="item-info">
+                        <h3>item image</h3>
+                        <input type="file" name="image" required>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-con">
+                    <div class="item-info">
+                        <h3>description</h3>
+                        <textarea name="des" id="" rows="5" placeholder="Enter item description"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="item-buttom">
+                <button>create item</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+      
+{% endblock %}
+

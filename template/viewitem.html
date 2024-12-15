@@ -1,0 +1,66 @@
+
+
+{% extends 'extend/dashboad-base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="boad-body">
+    <div class="items">
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.success %}
+        <div class="success-m">
+            <p>{{message}}</p>
+        </div>
+        {% else %}
+        <div class="info-m">
+            <p>{{message}}</p>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <div class="item">
+            <div class="image">
+                <a href="{item.image.url}">
+                    <img src="{{item.image.url}}" alt="image">
+                </a>
+            </div>
+            <div class="item-con">
+                <div class="item-info">
+                    <h3>name</h3>
+                    <p>{{item.name}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>outnumber</h3>
+                    <p>{{item.out_number}}</p>
+                </div>
+            </div>
+        </div>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="item">
+                <div class="item-con">
+                    <div class="item-info">
+                        <h3>selling price</h3>
+                        <input type="number" name="sprice" placeholder="Enter selling price" value="{{item.selling_price}}">
+                    </div>
+                    <div class="item-info">
+                        <h3>but at</h3>
+                        <input type="number" name="bprice" placeholder="Enter but price" value="{{item.but_price}}">
+                    </div>
+                    <div class="item-info">
+                        <h3>quantity</h3>
+                        <input type="number" name="quantity" placeholder="Enter quantity" value="{{item.quantity}}">
+                    </div>
+                </div>
+            </div>
+            <div class="item-buttom">
+                <a href="{% url 'dashboad' %}">back to store</a>
+                <button>save changies</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,43 @@
+
+{% extends 'extend/shop-base.html' %}
+{% load static %}
+{% block content %}
+
+ 
+<div class="store">
+    <div class="store-card">
+        <div>
+            <img src="{{item.image.url}}" alt="image">
+        </div>
+    </div>
+    <div class="store-card">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <h4>{{item.name}}</h4>
+                <p>
+                    {{item.des}}
+                </p>
+            </div>
+            <div class="">
+                <strong>N{{item.selling_price}}</strong>
+            </div>
+            <div class="cart-action">
+                <input type="text" name="item" hidden value="{{item.id}}">
+                <input type="number" name="price" hidden value="{{item.selling_price}}">
+                <input type="number" value="1" name="quantity">
+            </div>
+            <div class="cart-action">
+                {% if request.user.is_authenticated %}
+                <button>top cart</button>
+                {% else %}
+                <a href="{% url 'login' %}"> login before adding</a>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
+

@@ -1,0 +1,67 @@
+
+
+{% extends 'extend/dashboad-base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="boad-body">
+    <div class="item-con">
+        <div class="item-info">
+            <h3>my profile</h3>
+        </div>
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.success %}
+        <div class="success-m">
+            <p>{{message}}</p>
+        </div>
+        {% else %}
+        <div class="info-m">
+            <p>{{message}}</p>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div class="items">
+        <div class="item">
+            <div class="item-con">
+                <div class="item-info">
+                    <h3>username</h3>
+                    <p>{{profile.user.username}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>first name</h3>
+                    <p>{{profile.user.first_name}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>last name</h3>
+                    <p>{{profile.user.last_name}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-con">
+                <div class="item-info">
+                    <h3>phone number</h3>
+                    <p>{{profile.phone}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>position</h3>
+                    <p>{{profile.status}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>email</h3>
+                    <p>{{profile.user.email}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="item-buttom">
+            <a href="">delete account</a>
+            <a href="password.html">rest password</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,76 @@
+
+
+{% extends 'extend/dashboad-base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="boad-body">
+    <div class="item-con">
+        <div class="item-info">
+            <h3>all users {{users.count}}</h3>
+        </div>
+
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.info %}
+        <div class="info-m">
+            <p>{{message}}</p>
+        </div>
+        {% else %}
+        <div class="success-m">
+            <p>{{message}}</p>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+
+    </div>
+    {% if users %}
+    {% for user in users %}
+    <div class="items">
+        <div class="item">
+            <div class="item-con">
+                <div class="item-info">
+                    <h3>username</h3>
+                    <p>{{user.user.username}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>first name</h3>
+                    <p>{{user.user.first_name}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>last name</h3>
+                    <p>{{user.user.last_name}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-con">
+                <div class="item-info">
+                    <h3>phone number</h3>
+                    <p>{{user.phone}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>position</h3>
+                    <p>{{user.status}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>email</h3>
+                    <p>{{user.user.email}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="item-buttom">
+            {% if user.user.is_superuser %}
+            <a href="">is admin cant be deleted</a>
+            {% else %}
+            <a href="{% url 'deleteuser' user.user.username %}">delete account</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}
+

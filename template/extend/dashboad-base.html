@@ -1,0 +1,71 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="{% static 'image/shop.jpg' %}" type="image">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admincss.css' %}">
+    <link rel="stylesheet" href="{% static 'media.css' %}">
+    <title>otutu resources</title>
+</head>
+<body>
+    
+    <div>
+        <div class="top-menu">
+            <div class="menu-name">
+                <h3>Otutu Resources Improvement</h3>
+            </div>
+            {% if request.user.is_superuser or request.user.is_staff %}
+            <div class="menu-search">
+                <form action="{% url 'search' %}" name="search" method="get">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Enter Item Name or Out Number" name="item">
+                    <button>Search</button>
+                </form>
+            </div>
+            {% endif %}
+            <div class="bars">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+        <div class="boad">
+            {% if request.user.is_superuser or request.user.is_staff %}
+            <div class="left-menu">
+                <a href="{% url 'profile' %}" {% if request.path == '/account/profile/' %} class="menu-nav-action"{% endif %}><i class="fa fa-user"></i> my profile</a>
+                <a href="{% url 'dashboad' %}" {% if request.path == '/dashboad/' %} class="menu-nav-action"{% endif %}><i class="fa fa-cubes"></i> items</a>
+                <a href="{% url 'pricelist' %}" {% if request.path == '/pricelist/' %} class="menu-nav-action"{% endif %}><i class="fa fa-money"></i> pricelist</a>
+                <a href="{% url 'sells' %}" {% if request.path == '/sells/' %} class="menu-nav-action"{% endif %}><i class="fa fa-book"></i> sells note</a>
+                <a href="{% url 'credite' %}" {% if request.path == '/credite/' %} class="menu-nav-action"{% endif %}><i class="fa fa-book"></i> credit note</a>
+                <a href="{% url 'users' %}" {% if request.path == '/account/users/' %} class="menu-nav-action"{% endif %}><i class="fa fa-users"></i> all users</a>
+                <a href="{% url 'newitem' %}" {% if request.path == '/newitem/' %} class="menu-nav-action"{% endif %}><i class="fa fa-plus"></i> add new item</a>
+                <a href="{% url 'newuser' %}" {% if request.path == '/account/newuser/' %} class="menu-nav-action"{% endif %}><i class="fa fa-plus"></i> add new user</a>
+                <a href="{% url 'order' %}" {% if request.path == '/order/' %} class="menu-nav-action"{% endif %}><i class="fa fa-cube"></i> orders</a>
+                <a href="{% url 'logout' %}"><i class="fa fa-power-off"></i> log out</a>
+            </div>
+            {% else %}
+            <div class="left-menu">
+                <a href="{% url 'profile' %}" {% if request.path == '/account/profile/' %} class="menu-nav-action"{% endif %}><i class="fa fa-user"></i> my profile</a>
+                <a href="{% url 'pricelist' %}" {% if request.path == '/account/pricelist/' %} class="menu-nav-action"{% endif %}><i class="fa fa-money"></i> pricelist</a>
+                <a href="{% url 'order' %}" {% if request.path == '/account/order/' %} class="menu-nav-action"{% endif %}><i class="fa fa-cube"></i> orders</a>
+                <a href="{% url 'cart' %}" {% if request.path == '/cart/' %} class="menu-nav-action"{% endif %}><i class="fa fa-cube"></i> cart</a>
+                <a href="{% url 'store' %}" {% if request.path == '/store/' %} class="menu-nav-action"{% endif %}><i class="fa fa-cube"></i> store</a>
+                <a href="{% url 'logout' %}"><i class="fa fa-power-off"></i> log out</a>
+            </div>
+            {% endif %}
+
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </div>
+
+</body>
+
+<script src="{% static 'all.js' %}"></script>
+
+</html>

@@ -1,0 +1,54 @@
+
+
+{% extends 'extend/shop-base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="login">
+    <div>
+        <h3>Log in</h3>
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.success %}
+    <div class="success-m">
+        <p>{{message}}</p>
+    </div>
+    {% else %}
+    <div class="info-m">
+        <p>{{message}}</p>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    <form action="" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <div class="login-card">
+            <label for="">User Name</label>
+            <div class="login-field">
+                <input type="text" placeholder="Enter your name" name="uname">
+            </div>
+        </div>
+        <div class="login-card">
+            <label for="">User Password</label>
+            <div class="login-field">
+                <input type="password" placeholder="Enter your password" name="pass" class="pass">
+                <div class="eye">
+                    <i class="fa fa-eye" id="see"></i>
+                </div>
+            </div>
+        </div>
+        <div class="login-card">
+            <button>Log in</button>
+        </div>
+        <div>
+            <a href="passwordf.html">Forgotten Password</a>
+        </div>
+        <div>
+            <p>i don't have an account <a href="{% url 'signup' %}">Create one here</a></p>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+

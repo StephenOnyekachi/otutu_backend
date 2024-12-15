@@ -1,0 +1,58 @@
+
+{% extends 'extend/dashboad-base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="boad-body">
+    <div class="item-con">
+        <div class="item-info">
+            <h3>dashboad</h3>
+        </div>
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.success %}
+        <div class="success-m">
+            <p>{{message}}</p>
+        </div>
+        {% else %}
+        <div class="info-m">
+            <p>{{message}}</p>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+    </div>
+    <hr>
+
+    {% if items %}
+    {% for item in items %}
+    <div class="items">
+        <div class="item">
+            <div class="image">
+                <a href="{{item.image.url}}">
+                    <img src="{{item.image.url}}" alt="image">
+                </a>
+            </div>
+            <div class="item-con">
+                <div class="item-info">
+                    <h3>name</h3>
+                    <p>{{item.name}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>description</h3>
+                    <p>{{item.des}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>current price</h3>
+                    <p>N{{item.selling_price}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+</div>
+
+{% endblock %}
+

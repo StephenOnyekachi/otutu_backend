@@ -1,0 +1,110 @@
+
+
+{% extends 'extend/dashboad-base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="boad-body">
+    <div class="item-con">
+        <div class="item-info">
+            <h3>make sells report</h3>
+        </div>
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.success %}
+        <div class="success-m">
+            <p>{{message}}</p>
+        </div>
+        {% else %}
+        <div class="info-m">
+            <p>{{message}}</p>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+    </div>
+    <hr>
+    <div class="items">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="item">
+                <div class="item-con">
+                    <div class="item-info">
+                        <h3>select item</h3>
+                        <select name="item" id="">
+                            {% if item %}
+                            {% for item in item %}
+                            <option value="{{item.id}}">{{item.name}} {{item.out_number}}</option>
+                            {% endfor %}
+                            {% endif %}
+                        </select>
+                    </div>
+                    <div class="item-info">
+                        <h3>sells price</h3>
+                        <input type="number" name="price" placeholder="Enter price" required>
+                    </div>
+                    <div class="item-info">
+                        <h3>quantity</h3>
+                        <input type="number" name="quantity" placeholder="Enter quantity" required>
+                    </div>
+                </div>
+            </div>
+            <div class="item-buttom">
+                <button>create note</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="item-con">
+        <div class="item-info">
+            <h3>all sells report {{sells.count}}</h3>
+        </div>
+    </div>
+
+    {% if sells %}
+    {% for item in sells %}
+    <div class="items">
+        <div class="item">
+            <div class="image">
+                <a href="{% static 'image/004.jpg' %}">
+                    <img src="{% static 'image/004.jpg' %}" alt="image">
+                </a>
+            </div>
+            <div class="item-con">
+                <div class="item-info">
+                    <h3>name</h3>
+                    <p>{{item.item.name}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>outnumber</h3>
+                    <p>{{item.item.out_number}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>quantity</h3>
+                    <p>item.quantity</p>
+                </div>
+                <div class="item-info">
+                    <h3>price</h3>
+                    <p>N{{item.price}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>total</h3>
+                    <p>N{{item.total}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-con">
+                <div class="item-info">
+                    <i>Date: {{item.date}}</i>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+</div>
+
+{% endblock %}
+

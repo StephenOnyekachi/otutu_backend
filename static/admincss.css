@@ -1,0 +1,245 @@
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'bell MT', bell 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: sans-serif;
+}
+
+:root{
+    --bg: rgb(255, 0, 0);
+    --bg2: rgb(129, 0, 0);
+    --bg3: rgb(248, 248, 248);
+    --bg4: rgb(230, 230, 230);
+    --text: rgb(152, 152, 152);
+    --text2: #171717;
+    --title: rgb(201, 2, 2);
+    --sucess: rgb(0, 210, 221);
+    --info: rgb(255, 109, 109);  
+}
+
+.info-m p{
+    color: var(--info);
+    font-weight: lighter;
+    text-transform: capitalize;
+    text-align: center;
+    border: 1px solid var(--info);
+    padding: 6px;
+}
+.success-m p{
+    color: var(--sucess);
+    font-weight: lighter;
+    text-transform: capitalize;
+    text-align: center;
+    border: 1px solid var(--sucess);
+    padding: 6px;
+}
+
+.col-md-12, .col-md-10, .col-md-8, .col-md-6, .col-md-4, .col-md-3, .col-md-2{
+    padding: 5px;
+}
+
+.top-menu{
+    background-color: var(--bg4);
+    display: flex;
+}
+.bars{
+    padding: 10px;
+    color: var(--title);
+    cursor: pointer;
+    display: none;
+}
+.bars i{
+    font-size: 3rem;
+}
+.menu-name{
+    width: 100%;
+    padding: 6px;
+    justify-items: left;
+    text-transform: capitalize;
+}
+.menu-name h3{
+    text-align: left;
+    color: var(--title);
+    font-weight: bold;
+}
+.menu-search{
+    width: 100%;
+    padding: 6px;
+    justify-items: right;
+}
+.menu-search form{
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    border: 1px solid var(--text);
+}
+.menu-search form input{
+    padding: 6px;
+    border: 1px solid red;
+    width: 80%;
+    color: var(--text);
+    outline: none;
+    border: none;
+    background-color: inherit;
+}
+.menu-search form button{
+    padding: 6px;
+    border: 1px solid red;
+    width: 20%;
+    color: var(--bg3);
+    outline: none;
+    border: none;
+    background-color: var(--bg2);
+}
+
+.boad{
+    display: flex;
+}
+.left-menu{
+    background-color: var(--bg4);
+    width: 20%;
+    height: 100vh;
+}
+.left-menu a{
+    display: block;
+    width: 100%;
+    padding: 6px;
+    text-decoration: none;
+    color: var(--bg);
+    transition: all 0.5s ease;
+    text-transform: capitalize;
+}
+.left-menu a:hover{
+    width: 100%;
+    padding: 6px;
+    color: var(--bg);
+    background-color: var(--bg3);
+}
+.menu-nav-action{
+    width: 100%;
+    padding: 6px;
+    color: var(--bg);
+    background-color: var(--bg3);
+}
+.boad-body{
+    width: 80%;
+    height: 100vh;
+    overflow-y: scroll;
+    padding: 6px;
+}
+.items{
+    width: 99%;
+    margin: 10px;
+    background-color: var(--bg4);
+    transition: all 0.5s ease;
+}
+.items:hover{
+    background-color: var(--bg3);
+}
+.item{
+    display: flex;
+}
+.item .image{
+    width: 20%;
+}
+.item .image a img{
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+    object-position: left;
+}
+.item-con{
+    display: flex;
+    width: 100%;
+}
+.item-info{
+    /* display: flex; */
+    width: 100%;
+    text-transform: capitalize;
+    padding: 0px 10px;
+}
+.item-info h3{
+    text-transform: capitalize;
+    color: var(--title);
+    font-weight: bold;
+    font-size: 16px;
+}
+.item-info p{
+    text-transform: capitalize;
+    color: var(--text2);
+    font-weight: lighter;
+    font-size: 14px;
+}
+.item-info input, .item-info select, .item-info option, .item-info textarea{
+    width: 100%;
+    padding: 6px;
+    background-color: inherit;
+    color: var(--text2);
+    border: none;
+    border-bottom: 1px solid var(--text);
+    outline: none;
+}
+.item-buttom{
+    display: flex;
+    padding: 10px 0px;
+}
+.item-buttom a, .item-buttom button{
+    padding: 3px;
+    background-color: var(--bg);
+    margin: 0px 6px;
+    color: var(--bg3);
+    text-transform: capitalize;
+    text-decoration: none;
+    transition: all 0.5s ease;
+    border: none;
+    outline: none;
+}
+.item-buttom a:hover{
+    color: var(--info);
+    transform: scale(1.1);
+}
+.login-field{
+    width: 100%;
+    display: flex;
+}
+.login-field input{
+    width: 100%;
+    padding: 6px;
+    background-color: inherit;
+    color: var(--text2);
+    border: none;
+    border-bottom: 1px solid var(--text);
+    outline: none;
+}
+.login-field i{
+    border: none;
+    display: flex;
+    color: var(--bg);
+    padding: 10px;
+    outline: none;
+    background-color: inherit;
+}
+.login-field i:hover{
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .table-responsive table thead{
+    background-color: red;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: lighter;
+} */

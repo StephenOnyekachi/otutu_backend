@@ -1,0 +1,133 @@
+
+
+{% extends 'extend/dashboad-base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="boad-body">
+    <div class="item-con">
+        <div class="item-info">
+            <h3>make credit report</h3>
+        </div>
+    </div>
+    <hr>
+    <div class="items">
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.success %}
+        <div class="success-m">
+            <p>{{message}}</p>
+        </div>
+        {% else %}
+        <div class="info-m">
+            <p>{{message}}</p>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="item">
+                <div class="item-con">
+                    <div class="item-info">
+                        <h3>total price</h3>
+                        <input type="number" name="price" placeholder="Enter price">
+                    </div>
+                    <div class="item-info">
+                        <h3>quantity</h3>
+                        <input type="number" name="quantity" placeholder="Enter quantity">
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-con">
+                    <div class="item-info">
+                        <h3>customer name</h3>
+                        <input type="text" name="name" placeholder="Enter customer name">
+                    </div>
+                    <div class="item-info">
+                        <h3>customer phone</h3>
+                        <input type="text" name="phone" placeholder="Enter customer phone number">
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-con">
+                    <div class="item-info">
+                        <h3>shot note</h3>
+                        <textarea name="note" id="" rows="5" placeholder="shot note"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="item-buttom">
+                <button>done</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="item-con">
+        <div class="item-info">
+            <h3>all credit report {{credite.count}}</h3>
+        </div>
+    </div>
+    {% if credite %}
+    {% for credite in credite %}
+    <div class="items">
+        <div class="item">
+            <div class="item-con">
+                <div class="item-info">
+                    <h3>customer name</h3>
+                    <p>{{credite.name}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>customer phone</h3>
+                    <p>{{credite.number}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-con">
+                <div class="item-info">
+                    <h3>quantity</h3>
+                    <p>{{credite.quantity}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>total price</h3>
+                    <p>{{credite.price}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>date</h3>
+                    <p>{{credite.date}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-con">
+                <div class="item-info">
+                    <h3>shot note</h3>
+                    <p>{{credite.note}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>status</h3>
+                    {% if credite.paid %}
+                    <p><i class="fa fa-check-circle text-info"></i> paid</p>
+                    {% else %}
+                    <p><i class="fa fa-times-circle text-danger"></i> not paid</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="item-buttom">
+            {% if credite.paid %}
+            {% else %}
+            <a href="{% url 'paid' credite.id %}">unpaid make paid</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+
+
+{% endblock %}
+

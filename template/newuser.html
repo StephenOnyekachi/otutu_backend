@@ -1,0 +1,100 @@
+
+
+{% extends 'extend/dashboad-base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="boad-body">
+    <div class="item-con">
+        <div class="item-info">
+            <h3>create new user</h3>
+        </div>
+    </div>
+    <hr>
+    <div class="items">
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.success %}
+        <div class="success-m">
+            <p>{{message}}</p>
+        </div>
+        {% else %}
+        <div class="info-m">
+            <p>{{message}}</p>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="item">
+                <div class="item-con">
+                    <div class="item-info">
+                        <h3>user name</h3>
+                        <input type="text" name="uname" placeholder="Enter user name" required>
+                    </div>
+                    <div class="item-info">
+                        <h3>user status</h3>
+                        <select name="status" id="">
+                            <option value="staff">Staff</option>
+                            <option value="customer">Customer</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-con">
+                    <div class="item-info">
+                        <h3>first name</h3>
+                        <input type="text" name="fname" placeholder="Enter first name" required>
+                    </div>
+                    <div class="item-info">
+                        <h3>last number</h3>
+                        <input type="text" name="lname" placeholder="Enter last name" required>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-con">
+                    <div class="item-info">
+                        <h3>user email</h3>
+                        <input type="email" name="email" placeholder="Enter email" required>
+                    </div>
+                    <div class="item-info">
+                        <h3>user pnone number</h3>
+                        <input type="text" name="phone" placeholder="Enter phone number">
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-con">
+                    <div class="item-info">
+                        <h3>password</h3>
+                        <div class="login-field">
+                            <input type="password" placeholder="Enter password" name="pass1" class="pass" required>
+                            <div class="eye">
+                                <i class="fa fa-eye" id="see"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <h3>confirm password</h3>
+                        <div class="login-field">
+                            <input type="password" placeholder="Confirm password" name="pass2" class="pass2" required>
+                            <div class="eye2">
+                                <i class="fa fa-eye" id="see"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item-buttom">
+                <button>create user</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}
+

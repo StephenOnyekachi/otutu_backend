@@ -1,0 +1,56 @@
+
+{% extends 'extend/shop-base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="store">
+    <div class="store-card">
+        <h4>total bills</h4>
+        <i>N{{total}}</i>
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.success %}
+    <div class="success-m">
+        <p>{{message}}</p>
+    </div>
+    {% else %}
+    <div class="info-m">
+        <p>{{message}}</p>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+</div>
+
+<div class="store">
+    {% if cart %}
+    {% for cart in cart %}
+    <div class="store-card">
+        <div style="justify-self: left;">
+            <img src="{{cart.item.image.url}}" alt="image">
+        </div>
+    </div>
+    <div class="store-card">
+        <div>
+            <h4>{{cart.item.name}}</h4>
+            <p>
+                N{{cart.item.selling_price}}
+            </p>
+        </div>
+        <div>
+            <p>{{cart.quantity}} = N{{cart.total}}</p>
+        </div>
+        <div class="cart">
+            <a href="{% url 'remove_cart' cart.id %}">remove</a>
+        </div>
+    </div>
+    <hr>
+    {% endfor %}
+    {% endif %}
+</div>
+
+
+{% endblock %}
+
+

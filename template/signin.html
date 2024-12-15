@@ -1,0 +1,84 @@
+
+
+{% extends 'extend/shop-base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="login">
+    <div>
+        <h3>Sign in</h3>
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.success %}
+    <div class="success-m">
+        <p>{{message}}</p>
+    </div>
+    {% else %}
+    <div class="info-m">
+        <p>{{message}}</p>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    <form action="" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <div class="login-card">
+            <label for="">User Name</label>
+            <div class="login-field">
+                <input type="text" placeholder="Enter your name" name="uname" required>
+            </div>
+        </div>
+        <div class="login-card">
+            <label for="">First Name</label>
+            <div class="login-field">
+                <input type="text" placeholder="Enter your first name" name="fname" required>
+            </div>
+        </div>
+        <div class="login-card">
+            <label for="">Last Name</label>
+            <div class="login-field">
+                <input type="text" placeholder="Enter your last name" name="lname" required>
+            </div>
+        </div>
+        <div class="login-card">
+            <label for="">Phone Number</label>
+            <div class="login-field">
+                <input type="text" placeholder="Enter your pone number" name="phone" required>
+            </div>
+        </div>
+        <div class="login-card">
+            <label for="">Email</label>
+            <div class="login-field">
+                <input type="email" placeholder="Enter your email" name="email">
+            </div>
+        </div>
+        <div class="login-card">
+            <label for="">Password</label>
+            <div class="login-field">
+                <input type="password" placeholder="Create password" name="pass1" class="pass" required>
+                <div class="eye">
+                    <i class="fa fa-eye" id="see"></i>
+                </div>
+            </div>
+        </div>
+        <div class="login-card">
+            <label for="">Confirm Password</label>
+            <div class="login-field">
+                <input type="password" placeholder="Confirm password" name="pass2" class="pass2" required>
+                <div class="eye2">
+                    <i class="fa fa-eye" id="see"></i>
+                </div>
+            </div>
+        </div>
+        <div class="login-card">
+            <button>Create</button>
+        </div>
+        <div>
+            <p>i have an account <a href="{% url 'login' %}">login here</a></p>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,75 @@
+
+{% extends 'extend/dashboad-base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="boad-body">
+    <div class="item-con">
+        <div class="item-info">
+            <h3>dashboad</h3>
+        </div>
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.success %}
+        <div class="success-m">
+            <p>{{message}}</p>
+        </div>
+        {% else %}
+        <div class="info-m">
+            <p>{{message}}</p>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+    </div>
+    <hr>
+
+    {% if items %}
+    {% for item in items %}
+    <div class="items">
+        <div class="item">
+            <div class="image">
+                <a href="{{item.image.url}}">
+                    <img src="{{item.image.url}}" alt="image">
+                </a>
+            </div>
+            <div class="item-con">
+                <div class="item-info">
+                    <h3>name</h3>
+                    <p>{{item.name}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>outnumber</h3>
+                    <p>{{item.out_number}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>selling price</h3>
+                    <p>N{{item.selling_price}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>but at</h3>
+                    <p>N{{item.but_price}}</p>
+                </div>
+                <div class="item-info">
+                    <h3>quantity</h3>
+                    <p>{{item.quantity}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="item-buttom">
+            <a href="{% url 'viewitem' item.id %}">view item</a>
+            <a href="{% url 'deleteitem' item.id %}">delete item</a>
+            {% if item.is_avaliable %}
+            <a href="{% url 'is_avaliable' item.id %}">avaliable make unavaliable</a>
+            {% else %}
+            <a href="{% url 'is_avaliable' item.id %}">unavaliable make avaliable</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+</div>
+
+{% endblock %}
+
